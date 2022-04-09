@@ -10,17 +10,36 @@
 </head>
 <body>
     <div id="app">
-        <!-- {{name}} -->
+        {{email}}
+         <div v-bind:id="identity + 0">test id</div>  
+           <!-- to affect changable id from a data -->
+        <div v-html="name"></div>  
+          <!-- to apply html tags with data -->
+        {{5+4}} <br>
+        {{x+y}} <br>
+        {{mult()}}  
+         <!-- call function  -->
+
+       
     </div>
       <script>
           new Vue({
               'el':'#app',
             'data':{
-                name:'anass',
-                email:'anass@raissi.com'
+                name:'<h1>anass</h1>',
+                email:'anass@raissi.com',
+                identity:'id_vus_js',
+                x:'4',
+                y:'7'
             },
-            'template':'<div><h1>{{email}}</h1><br><h2>{{name}}</h2></div>'
-            
+            // 'template':'<div><h1>{{email}}</h1><br><h2>{{name}}</h2></div>'  
+              'methods':{
+                  'mult':function(){
+                      return this.x * this.y;
+                  }
+              }
+                        
+              
 
 
           });
