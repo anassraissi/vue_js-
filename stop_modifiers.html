@@ -11,9 +11,16 @@
 <body>
             
           <div id="app">
-              <div V-on:mouseover="rect1" style="height: 200px; width: 200px; background-color: blue;">
-                <div V-on:mouseover.stop="rect2" style="height: 100px; width: 100px; background-color:red;">
+              <div V-on:mouseover.self="rect1" style="height: 200px; width: 200px; background-color: blue;">
+                <div V-on:mouseover="rect2" style="height: 100px; width: 100px; background-color:red;">
                  <!-- naf lblane event.stopPropagation();  -->
+                 <!-- 
+                     modifiers :{
+                         once : excute event only once,
+                         self : excute event that mouseover it,
+                         capture : excute out of events orders 
+                     }
+                  -->
                 </div>
  
               </div>
