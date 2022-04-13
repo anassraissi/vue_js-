@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+
+</head>
+<body>
+    <div  id="app">
+        <!-- shorthand -->
+        <!-- <div v-bind:id="test" v-bind:class="test"> the same as below -->
+        <div :id="test" :class="test">
+            <!-- <button v-on:click="function_one">Show</button> the same as below  --> 
+            <button @click="function_one">Show</button>     
+            
+            Hi i'm anass in using bind
+        </div>
+    </div>
+    <script>
+        new Vue({
+         'el': '#app',
+          'data' :{
+              'test' : 'anass'
+          },
+          'methods':{
+              'function_one':function(){
+                  alert('Hi bro');
+              }
+          }
+             
+        });
+    </script>
+</body>
+</html>
