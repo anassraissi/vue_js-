@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <div class="rect" v-bind:class="'red'"></div>
+        <!-- <div class="rect" :class="{blue:active,red:!active}"></div> -->
+        <div class="rect" :class="objectClass"></div>
+
+        <button @click= "active=!active">togle</button>
+
+    </div>
+  <script>
+      new Vue({
+        'el':'#app',
+          'data':{
+              active :'true'
+          },
+          'computed':{
+              objectClass:function(){
+                  return {blue:this.active,red:!this.active,'border-box':this.active};
+              }
+          }
+      });
+  </script> 
+  <style>
+        .border-box{border: 1px solid black ;}
+      .rect{height: 100px; width: 100px;}
+      .red{background-color:red;}
+      .blue{background-color: cadetblue;}
+  </style>   
+</body>
+</html>
