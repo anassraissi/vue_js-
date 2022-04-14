@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <input v-model="First_name"><br>  
+        <!-- computed and hole data changed -->
+        <input v-model="test"><br>
+        <!-- just data changed  -->
+       {{First_name +'  '+ Last_name +''+ Date.now()}} <br>
+       {{full_name}}
+
+    </div>
+
+     <script>
+         new Vue({
+            'el':'#app',
+            'data' : {
+                First_name : 'Anass',
+                Last_name : 'Raissi',
+                test : 'test'
+            },
+            'computed' :{
+                'full_name':function(){
+                return this.First_name+' '+this.Last_name+ Date.now();  
+                // computed properties vs methods =>  the computed properties are cached based on their reactive dependencies. A computed property will only re-evaluate when some of its reactive dependencies have changed.
+
+
+                }
+            }
+         });
+       
+     </script>
+</body>
+</html>
