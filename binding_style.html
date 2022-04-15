@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+
+</head>
+<body>
+  <div id="app">
+          <div style="color: royalblue;" :style="[{'font-size':size + 'px'},border,objectstyle]">Hi ana  i'm using binding style to an element</div>
+          <button @click='size++'>Increses</button> <button @click='size--'>Decrese</button>
+  </div>    
+    <script>
+        new Vue({
+            'el':'#app',
+              'data':{
+                  objectstyle: {'text-align':'center'},
+                  border:{border:'2px solid black'},
+                   size:30
+                    
+              }
+        });
+
+
+
+    </script>
+</body>
+</html>
