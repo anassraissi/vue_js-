@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+
+</head>
+<body>
+     <div id="app">
+        <div v-for="item in array">{{item}}</div> <br>
+        <input v-model="new_item">  
+        <!-- v-model has tow role bind data and fetch data -->
+        <button @click="AddItem">AddItem</button>
+        <div v-for="item in array2">
+         name : {{item.name}} <br>
+         age : {{item.age}}
+        </div>
+     </div>
+     <script>
+         new Vue({
+          'el': '#app',
+            'data':{
+                new_item:'',
+                array:[1,2,3],
+                array2:[
+                         {name:'Anass', age:23},
+                         {name:'Raissi',age:29}
+                        ]
+            },
+            'methods':{
+                AddItem:function(){
+                    this.array.push(this.new_item),
+                    this.new_item=''
+                }
+            }
+         });
+     </script>
+</body>
+</html>
