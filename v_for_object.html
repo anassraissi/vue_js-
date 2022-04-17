@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+
+</head>
+<body>
+     <div id="app">
+         <div v-for="(item, key, index) in Object">
+         #{{index+1}}  {{key}} : {{item}} <br>   
+         </div>
+         <!-- key and item work in {} declared in data -->
+     </div>
+     <script>
+         new Vue({
+            'el' : '#app',
+            'data':{
+                Object :{name:'Raiss',Email:'anass.raissi@gmial.com',age:29}
+            }
+
+         });
+
+     </script>
+</body>
+</html>
