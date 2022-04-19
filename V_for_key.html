@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+
+</head>
+<body>
+ <div id="app">
+           <div v-for="user in users"  :key="user.name">
+               <input v-model="user.name" class="user">
+           </div>
+           <button @click="reverseInputs">Reverse Inputs</button>
+           <button @click="AddclassTofistInput">Add Class to first input </button>
+ </div>    
+ <script>
+     new Vue({
+        'el':'#app',
+        'data': {
+            users:[
+                  {name:'Raissi Anass',age:27},
+                  {name:'Raissi Imam',age:28}
+            ]
+        },
+        'methods':{
+            reverseInputs:function(){
+                this.users.reverse();
+            },
+            AddclassTofistInput:function(){
+               document.querySelector('.user').classList.add('error');
+            //    La méthode querySelector() de l'interface Document retourne
+            // le premier Element dans le document correspondant au sélecteur 
+            //- ou groupe de sélecteurs - spécifié(s), ou null si aucune correspondance n'est trouvée.
+            }
+        }
+
+     });
+ </script>
+ <style>
+     .error{border: 2px solid red;}
+ </style>
+</body>
+</html>
