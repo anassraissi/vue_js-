@@ -17,7 +17,12 @@
     <hr>
     <!-- <span class="fa fa-star" v-for="item in parseInt(rate)"></span><span class="fa fa-star" v-for="item in 5 -rate"></span> -->
     <input v-model="rate">
-    <i class="fas fa-star" v-for="item in parseInt(rate)"></i> <i class="fal fa-star" v-for="item in 5-rate"></i>
+    <!-- <i  @click="rate=item" class="fas fa-star" v-for="item in parseInt(rate)"></i>
+     <i class="fal fa-star" v-for="item in 5-rate"></i> -->
+     <span  @click="rate=item" class="fas fa-star" v-for="item in parseInt(rate)" ></span> 
+     <!-- hadi li kant9as bwahed kolama brakna najma 3amra li 9bal menha  -->
+     <span @click="rate=item+rate" class="fal fa-star" v-for="item in 5-rate"></span> 
+     <!-- hadi katzid najma kahla kolama brakna 3la najma khawya  -->
     <br>
     </div>
     <script>
