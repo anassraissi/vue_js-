@@ -52,7 +52,7 @@
                filtername :function(){
                 var app=this;
                   return this.users.filter(function(value){
-                         return value.name.indexOf(app.search)!==-1;    //show when it be by caracter
+                         return value.name.indexOf(app.search)!==-1;    //show when it be by caracter  if it's not match its return -1
                   }); 
                }
             }
