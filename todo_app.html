@@ -10,16 +10,16 @@
 
 </head>
 <body>
-         
-  
     <section class="todoapp">
       <header class="header">
         <h1>todos</h1>
         <input class="new-todo"
           autocomplete="off"
-        
-          placeholder="">
+          v-model="addnew"
+          @keyup.enter="AddnewItem"
+          placeholder="What needs to be done?">
       </header>
+    
         <section class="main">
           <ul class="todo-list">
             <li class="todo" v-for="item in todos" :class="{completed:item.completed}"> 
@@ -40,6 +40,7 @@
         new Vue({
             'el':'.todoapp',
             'data':{
+                addnew:'',
                 todos:[
                     {title:'test',completed:true},
                     {title:'test2',completed:false}
@@ -48,11 +49,19 @@
                 'methods':{
                     destroy:function(item){
                     this.todos.splice(this.todos.indexOf(item),1);
+                    },
+                    AddnewItem:function(){
+                      if(this.addnew!='')
+                      this.todos.push(
+                           {
+                             'title':this.addnew,
+                             'completed':false
+                           }
+                      );
+                       this.addnew="";
                     }
 
                 }
-
-
         });
       </script>
 </body>
