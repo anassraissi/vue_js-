@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link href="https://unpkg.com/todomvc-app-css@2.1.0/index.css" rel="stylesheet"/>
+<script src="vue.js"></script>
+
+</head>
+<body>
+         
+  
+    <section class="todoapp">
+      <header class="header">
+        <h1>todos</h1>
+        <input class="new-todo"
+          autocomplete="off"
+        
+          placeholder="">
+      </header>
+        <section class="main">
+          <ul class="todo-list">
+            <li class="todo" v-for="item in todos" :class="{completed:item.completed}"> 
+                <!-- coucher si data deja completed  
+                  completed => class predifinie in  
+                  <link href="https://unpkg.com/todomvc-app-css@2.1.0/index.css" rel="stylesheet"/>
+                -->
+              <div class="view">
+                <input class="toggle" type="checkbox" v-model="item.completed">
+                <label>{{item.title}}</label>
+                <button class="destroy" @click="destroy(item)"></button>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </section>
+      <script>
+        new Vue({
+            'el':'.todoapp',
+            'data':{
+                todos:[
+                    {title:'test',completed:true},
+                    {title:'test2',completed:false}
+                    ]
+                },
+                'methods':{
+                    destroy:function(item){
+                    this.todos.splice(this.todos.indexOf(item),1);
+                    }
+
+                }
+
+
+        });
+      </script>
+</body>
+</html>
