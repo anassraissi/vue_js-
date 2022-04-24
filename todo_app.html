@@ -22,7 +22,7 @@
     
         <section class="main">
           <ul class="todo-list">
-            <li class="todo" v-for="item in todos" :class="{completed:item.completed}"> 
+            <li class="todo" v-for="item in filtertodo" :class="{completed:item.completed}"> 
                 <!-- coucher si data deja completed  
                   completed => class predifinie in  
                   <link href="https://unpkg.com/todomvc-app-css@2.1.0/index.css" rel="stylesheet"/>
@@ -35,11 +35,49 @@
             </li>
           </ul>
         </section>
+        <footer class="footer">
+          <span class="todo-count">
+            <strong>1</strong> item left
+          </span>
+          <ul class="filters">
+            <li><a href="#"  @click.prevent="Visibility='all'"  :class="{selected:Visibility=='all'}">All</a>
+              
+            </li>
+            <li>
+              <a href="#" @click.prevent="Visibility='Active'" :class="{selected:Visibility=='Active'}" >Active</a>
+            </li>
+            <li><a href="#" @click.prevent="Visibility='completed'" :class="{selected:Visibility=='completed'}">Completed</a></li>
+           
+          </ul>
+          <button class="clear-completed">
+            Clear completed
+          </button>
+        </footer>
       </section>
+      <script>
+        var filters={
+           'all':function(todos){
+             return todos
+           },
+           'Active':function(todos){
+             return todos.filter(function(todo){
+               return !todo.completed;  
+              //  completed false
+             })
+           },
+           completed:function(todos){
+             return todos.filter(function(todo){
+               return todo.completed; 
+              //  completed true
+             }) 
+           }
+        }
+      </script>
       <script>
         new Vue({
             'el':'.todoapp',
             'data':{
+                Visibility:'all',
                 addnew:'',
                 todos:[
                     {title:'test',completed:true},
@@ -61,6 +99,11 @@
                        this.addnew="";
                     }
 
+                },
+                'computed':{
+                  filtertodo:function(){
+                      return filters[this.Visibility](this.todos)  
+                  }
                 }
         });
       </script>
