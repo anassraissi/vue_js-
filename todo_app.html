@@ -37,7 +37,7 @@
         </section>
         <footer class="footer">
           <span class="todo-count">
-            <strong>1</strong> item left
+            <strong>{{raminTodo}}</strong> {{RemainText}}
           </span>
           <ul class="filters">
             <li><a href="#"  @click.prevent="Visibility='all'"  :class="{selected:Visibility=='all'}">All</a>
@@ -47,9 +47,8 @@
               <a href="#" @click.prevent="Visibility='Active'" :class="{selected:Visibility=='Active'}" >Active</a>
             </li>
             <li><a href="#" @click.prevent="Visibility='completed'" :class="{selected:Visibility=='completed'}">Completed</a></li>
-           
           </ul>
-          <button class="clear-completed">
+          <button class="clear-completed" @click="RemoveCompleted">
             Clear completed
           </button>
         </footer>
@@ -97,14 +96,28 @@
                            }
                       );
                        this.addnew="";
-                    }
-
+                    },
+                    RemoveCompleted:function(){
+                          this.todos=filters.Active(this.todos) //show just the active todos
+                          
+                      }
                 },
                 'computed':{
                   filtertodo:function(){
                       return filters[this.Visibility](this.todos)  
+                  } ,
+                  'raminTodo':function(){
+                    return filters.Active(this.todos).length; //show just the active todos
+
+                  },
+                  'RemainText':function(){
+                     if(filters.Active(this.todos).length > 1){
+                         return 'items left';
+                     }
+                     else
+                      return 'item left';
                   }
-                }
+                } 
         });
       </script>
 </body>
