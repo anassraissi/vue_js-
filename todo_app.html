@@ -19,8 +19,10 @@
           @keyup.enter="AddnewItem"
           placeholder="What needs to be done?">
       </header>
-    
+        
         <section class="main">
+          <input class="toggle-all" id="toggle-all" type="checkbox" v-model="AllDone" >
+          <label for="toggle-all">Mark all as complete</label>
           <ul class="todo-list">
             <li class="todo" v-for="item in filtertodo" :class="{completed:item.completed}"> 
                 <!-- coucher si data deja completed  
@@ -116,8 +118,21 @@
                      }
                      else
                       return 'item left';
+                  },
+                  AllDone:{
+                    get:function(){
+                      return this.raminTodo==0;
+                     },
+                     set:function(value){
+                       this.todos.forEach(function(item){   //convertir tout les todos completed quand checkbox retuen true comme parametre
+                          item.completed=value;
+                       });
+                         
+                     }
                   }
-                } 
+                 
+                  }
+                
         });
       </script>
 </body>
