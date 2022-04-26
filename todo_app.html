@@ -24,16 +24,17 @@
           <input class="toggle-all" id="toggle-all" type="checkbox" v-model="AllDone" >
           <label for="toggle-all">Mark all as complete</label>
           <ul class="todo-list">
-            <li class="todo" v-for="item in filtertodo" :class="{completed:item.completed}"> 
+            <li class="todo" v-for="item in filtertodo" :class="{completed:item.completed,editing:item==todoediting}"> 
                 <!-- coucher si data deja completed  
                   completed => class predifinie in  
                   <link href="https://unpkg.com/todomvc-app-css@2.1.0/index.css" rel="stylesheet"/>
                 -->
               <div class="view">
                 <input class="toggle" type="checkbox" v-model="item.completed">
-                <label>{{item.title}}</label>
+                <label @dblclick="edittodo(item)">{{item.title}}</label>  
                 <button class="destroy" @click="destroy(item)"></button>
               </div>
+              <input class="edit" type="text" v-model="item.title" @keyup.enter="doneEditing()" @keyup.esc="CancelEditing()">
             </li>
           </ul>
         </section>
@@ -80,6 +81,8 @@
             'data':{
                 Visibility:'all',
                 addnew:'',
+                todoediting:null,
+                 OldItem:null,
                 todos:[
                     {title:'test',completed:true},
                     {title:'test2',completed:false}
@@ -102,6 +105,21 @@
                     RemoveCompleted:function(){
                           this.todos=filters.Active(this.todos) //show just the active todos
                           
+                      },
+                      edittodo:function(item){
+                         this.todoediting=item;
+                          this.OldItem=item.title;
+                      },
+                      doneEditing:function(){
+                        if(this.todoediting.title==''){   
+                            this.destroy(this.todoediting);
+                        }
+                        else
+                        this.todoediting=null;  // pour desactiver editing class de todo
+                      },
+                      CancelEditing:function(){
+                          this.todoediting.title=this.OldItem;
+                          this.todoediting=null;
                       }
                 },
                 'computed':{
