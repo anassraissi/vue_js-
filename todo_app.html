@@ -74,6 +74,15 @@
              }) 
            }
         }
+        var todos_storage ={
+          fetch:function(){
+              return JSON.parse(localStorage.getItem('todos')|| '[]');
+
+          },
+          save:function(todos){
+             localStorage.setItem('todos',JSON.stringify(todos));
+          }
+        }
       </script>
       <script>
         new Vue({
@@ -83,10 +92,7 @@
                 addnew:'',
                 todoediting:null,
                  OldItem:null,
-                todos:[
-                    {title:'test',completed:true},
-                    {title:'test2',completed:false}
-                    ]
+                todos:todos_storage.fetch()
                 },
                 'methods':{
                     destroy:function(item){
@@ -120,8 +126,17 @@
                       CancelEditing:function(){
                           this.todoediting.title=this.OldItem;
                           this.todoediting=null;
-                      }
+                      },
+                     
                 },
+                watch:{        //focus on item
+                        todos:{
+                             handler:function(todos){     
+                                todos_storage.save(todos); //add to todos after clik enter to the textbox
+                             },
+                             deep:true
+                        }
+                      },
                 'computed':{
                   filtertodo:function(){
                       return filters[this.Visibility](this.todos)  
