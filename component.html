@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <porduct>Hi i'm anass raissi i'm using component</porduct>
+    </div>
+      <script>
+      Vue.component('porduct', {
+  data: function () {
+    return {
+      name: 'Raissi Anass',
+    }
+  },
+  // template: '<h1>{{name}}</h1>',
+  template: '<h1><slot></slot></h1>',  //
+});
+  new Vue({
+      'el': '#app'      //declaration obliatoire pour le travailler
+
+  });
+      </script>
+</body>
+</html>
