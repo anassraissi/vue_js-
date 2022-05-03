@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>component_props_validation</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+     <div id="app">
+        <product name="savon" :price="100" category="lyhgiene"></product>
+        <!-- <product name="savon" :price="-11" category="lyhgiene"></product>
+          error price should be more than 0 -->
+
+        <!-- <product name="savon"  category="lyhgiene"></product>
+             set props price to 0
+         -->
+        
+        <!-- <product name="savon" :price="'100'" category="lyhgiene"></product>
+        error price type number -->
+
+        <!-- <product name="savon" price="100"></product>    -->
+        <!-- error category required -->
+     </div>
+     <script>
+         Vue.component('product',{
+           template:'<h2>name :{{name}}, price: {{price}}, category: {{category}} </h2>',
+            props:{
+                'name':{},
+                'price':{
+                        type:[Number,String],default:0,
+                     validator:function(value){
+                      return value >= 0
+                }},
+                'category':{required:true}
+            }
+         });
+         new Vue({
+            'el':'#app',
+         });
+     </script>
+</body>
+</html>
