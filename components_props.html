@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+
+</head>
+<body>
+      <div id="app"> 
+      <prodcut name="Savon" price="150" category="lygiene"></prodcut>
+      <prodcut :name="name" price="150" category="lygiene"></prodcut>  
+      <!-- v-bind  name deja declarer , afecter liaquide a cet variable -->
+      <prodcut  v-for="product in products" :name="product.name" :price="product.price" :category="product.category"></prodcut>  
+      </div>
+      <script>
+        Vue.component('prodcut',{
+          template:'<h1>Name :{{name}} , Price :{{price}} , Category: {{category}}</h1>',
+          props:['name','price','category']
+        });
+          new Vue({
+            'el':'#app',
+            data:{
+                 name:'liquide',
+                 products:[
+                    {'name':'p1','price':'100','category':'cat 1'},
+                    {'name':'p2','price':'200','category':'cat 2'},
+                    {'name':'p2','price':'300','category':'cat 3'},
+
+                 ]
+                
+                 
+            }
+          });
+      </script>
+</body>
+</html>
