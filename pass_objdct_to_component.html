@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+   <product :product-data="product"></product>
+   <product :product-data="product2"></product>
+    <hr>
+    <product v-for="item in products"  :product-data="item"></product>
+    </div>
+    <script>
+            Vue.component('product',{
+          template:'<h1>{{ProductData.name}}, {{ProductData.id}}</h1>',   
+                // props:['name']
+                props:{
+                    'ProductData':{},  
+                     //if i use camel case declaration the i must declared
+                    //   the component as cabab case ProductData to :product-data
+
+                }
+                   
+                
+        });
+        new Vue({
+            'el':'#app',
+              'data':{
+                  product:{id:1,name:'product 1'},
+                  product2:{id:1,name:'product 2'},
+                  products:[
+                       {id:2,name:'Raissi'},
+                       {id:3,name:'Anass'}
+                  ]
+
+              }
+        });
+    </script>
+</body>
+</html>
