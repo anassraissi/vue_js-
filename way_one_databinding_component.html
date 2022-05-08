@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+      <div id="app">
+        <counter :val="usercount"  v-on:updateval="add"></counter>
+          <!--  v-on:updateval="add" => on set 6 like parametre and handlit in class vue in the bottom -->
+      </div>
+      <script>
+         Vue.component('counter',{
+            template: '<button @click="clicked()">Click Me</button>',
+            props:['val'],
+            methods:{
+                    clicked:function(){
+                        // this.val++;  not working
+                        // this.usercount++;   not working
+                        this.$emit('updateval',this.val++);  //working cause any calculating number must be outside, on set it in events 
+                    }
+                }
+         });
+          new Vue({
+              'el':'#app',
+                data:{
+                    usercount:5
+                },
+                methods:{
+                    add:function(value){
+                      this.usercount=value;
+                    } 
+                }
+
+                
+          });
+      </script>
+</body>
+</html>
