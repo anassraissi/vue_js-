@@ -10,7 +10,8 @@
 <body>
     <div id="app">
       ChangeTimes :  {{ChangeTimes}} <br>
-        <button-counter v-on:events="count()" :value="3"></button-counter>  
+        <button-counter v-on:click.native="clicked()" v-on:events="count()" :value="3"></button-counter>  
+        <!--v-on:click.native="clicked() mean that event is elementry i it must make it befor any other events   -->
         <!-- beggin with 3 -->
         <button-counter v-on:events="count()"></button-counter>  
         <!-- when evet my event is on set count -->
@@ -33,6 +34,7 @@
                      this.counter++;
                      this.$emit('events')
                  }
+                
              }
             
          });       
@@ -45,7 +47,10 @@
               methods:{
                   count:function(){
                       this.ChangeTimes++;
-                  }
+                  },
+                  clicked:function(){
+                    alert('clicked');
+                 }
               }
         });
     </script>
