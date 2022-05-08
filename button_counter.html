@@ -9,25 +9,44 @@
 </head>
 <body>
     <div id="app">
-                <button-counter></button-counter>
+      ChangeTimes :  {{ChangeTimes}} <br>
+        <button-counter v-on:events="count()" :value="3"></button-counter>  
+        <!-- beggin with 3 -->
+        <button-counter v-on:events="count()"></button-counter>  
+        <!-- when evet my event is on set count -->
     </div>
     <script>
         Vue.component('button-counter',{
              template: '<button @click="incrument()">{{counter}}</button>',
              data:function(){
                  return {
-                     counter :0
+                     counter :this.value  // begin with 0
                  }
              },
+             props:{
+                 value:{
+                        default:0
+                 }
+                },
              methods:{
                  incrument:function(){
                      this.counter++;
+                     this.$emit('events')
                  }
              }
+            
          });       
         // the class Vue must set in the bottom of script
          new Vue({
-            'el':'#app'
+            'el':'#app',
+              'data':{
+                  ChangeTimes:0,
+              },
+              methods:{
+                  count:function(){
+                      this.ChangeTimes++;
+                  }
+              }
         });
     </script>
 </body>
