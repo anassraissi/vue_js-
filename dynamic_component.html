@@ -10,19 +10,32 @@
 </head>
 <body>
         <div id="app">
+
             <button @click="comp='FirstComp'">First Component</button>     
             <!-- change component value to  FirstComp-->
             <button @click="comp='SecondComp'">second Component</button>       
                  <!-- change component value to  SecondComp-->
 
             <hr>
-
-            <component :is="comp"></component>   
+       <keep-alive>    
+           <!-- serve to save in the memory for not be create again just show it when we need it -->
+        <component :is="comp"></component>
+       </keep-alive>
+              
             <!-- class component for make any change -->
         </div>   
         <script>
             Vue.component('FirstComp',{
-              template: '<h1>First Component</h1>',
+              template: `<div> <h1>First Component</h1>
+                        <button @click="counter++">Incresse</button>
+                        {{counter}}
+                        </div>
+              `,
+              data:function(){
+                  return {
+                    counter:0
+                  }
+              }
             });
             Vue.component('SecondComp',{
                 template: '<h1>Second Component</h1>',
