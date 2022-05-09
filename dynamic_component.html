@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+
+</head>
+<body>
+        <div id="app">
+            <button @click="comp='FirstComp'">First Component</button>     
+            <!-- change component value to  FirstComp-->
+            <button @click="comp='SecondComp'">second Component</button>       
+                 <!-- change component value to  SecondComp-->
+
+            <hr>
+
+            <component :is="comp"></component>   
+            <!-- class component for make any change -->
+        </div>   
+        <script>
+            Vue.component('FirstComp',{
+              template: '<h1>First Component</h1>',
+            });
+            Vue.component('SecondComp',{
+                template: '<h1>Second Component</h1>',
+
+});
+            new Vue({
+               'el':'#app',
+               data:{
+                   comp:'SecondComp',
+               }
+            });
+        </script>
+</body>
+</html>
