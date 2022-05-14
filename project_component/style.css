@@ -1,0 +1,8 @@
+.title{text-align: center;font-weight: bold; font-size: 18px};
+.body_text{text-justify:newspaper;}
+body{direction:rtl;}
+.btn{width: 100%;}
+.list-group-flush,.list-prop {list-style: none;padding: 0;}
+ul .list-prop li{padding-bottom: 5px;}
+.fa-youtube{color: red;}
+
