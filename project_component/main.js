@@ -3,26 +3,28 @@
 
 window.onload = function () {   //when page loaded doz mn hna
     Vue.component('comp-course',{
+          'props':{
+              'course':{type:Object,required:true}
+          },
         'template':
                     `<div class="col-lg-4">
                     <div class="card" style="width: 18rem;">
                         <img src="codeIgniter.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                        <h5 class="card-title">كوديكناتر 2,3,4</h5>
-                        <p class="title">إطار صغير بميزات قوية
-                        </p> <p class="card-text body_text">
-                            كوديكناتر هو إطار ذو مساحة صغيرة جدًا ، مصمم للمطورين الذين يحتاجون إلى مجموعة أدوات بسيطة وأنيقة لإنشاء تطبيقات ويب كاملة الميزات</p>
+                        <h5 class="card-title">{{course.name}}</h5>
+                        <p class="title">
+                        </p> <p class="card-text body_text">{{course.description}}</p>
                         </div>
                         <ul class="list-group list-group-flush">
                         <li class="list-group-item">   <i class="fa-brands fa-youtube"></i>  إحصائيات اليوتيوب</li>
                         <li class="list-group-item">
                             <ul class="list-prop">
-                            <li><i class="fa-solid fa-table-list"></i> درس 33</li>
+                            <li><i class="fa-solid fa-table-list"></i> {{course.statistics.lessons}}</li>
                             
-                            <li>   <i class="fa-solid fa-clock"></i>  06:44:33</li>
-                            <li> <i class="fa-solid fa-eye"></i>  مليون مشاهدة 43  </li>
-                            <li>  <i class="fa-solid fa-thumbs-up"></i> إعجاب 444</li>
-                            <li> <i class="fa-solid fa-comment"></i>  55 تعليق</li>
+                            <li>   <i class="fa-solid fa-clock"></i> {{course.statistics.duration}}</li>
+                            <li> <i class="fa-solid fa-eye"></i>  {{course.statistics.duration}}  </li>
+                            <li>  <i class="fa-solid fa-thumbs-up"></i>  {{course.statistics.likeCount}} </li>
+                            <li> <i class="fa-solid fa-comment"></i>  {{course.statistics.commentCount}} </li>
                             </ul>
                         </li>
                         </ul>
@@ -37,8 +39,24 @@ window.onload = function () {   //when page loaded doz mn hna
 new Vue({
     'el':'#courses',
       'template': `<div class="row">
-                    <comp-course></comp-course>  
-                    </div>`
+                    <comp-course :course=firstcourse></comp-course>                      
+                    </div>`,
                     // comp-course components declaration inside vue class 
- });
+     'data':{
+         'firstcourse':{
+            "id": "PL1FWK-sgJ9ek59ylOuaS8Ggjz9oBVM8Hb",
+	        "name": "VueJS \u0625\u0633\u0623\u0644\u0646\u064a \u0639\u0646",
+	        "url": "https:\/\/www.youtube.com\/watch?v=TQQVt3CbSCw&list=PL1FWK-sgJ9ek59ylOuaS8Ggjz9oBVM8Hb",
+	        "description": "",
+	        "thumbnails": "https:\/\/i.ytimg.com\/vi\/TQQVt3CbSCw\/sddefault.jpg",
+	        "statistics": {
+	            "viewCount": 111,
+	            "likeCount": 11,
+	            "commentCount": 7,
+	            "duration": "00:04:18",
+	            "lessons": 2
+         }
+      }
+    }
+});
 }
