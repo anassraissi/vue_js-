@@ -9,7 +9,7 @@ window.onload = function () {   //when page loaded doz mn hna
         'template':
                     `<div class="col-lg-4">
                     <div class="card" style="width: 18rem;">
-                        <img src="codeIgniter.jpg" class="card-img-top" alt="...">
+                        <img class="card-img-top" :src="course.thumbnails" alt="">
                         <div class="card-body">
                         <h5 class="card-title">{{course.name}}</h5>
                         <p class="title">
@@ -30,7 +30,7 @@ window.onload = function () {   //when page loaded doz mn hna
                         </ul>
                         
                         <div class="card-body">
-                        <button class="btn btn-primary btn">شاهد الأن</button>
+                        <a target="_blank" class="btn btn-primary btn" :href="course.url">شاهد الأن</a>
                          </div>
                          </div>
                          </div>`
