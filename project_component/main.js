@@ -35,17 +35,38 @@ window.onload = function () {   //when page loaded doz mn hna
                          </div>
                          </div>`
 
-     });
+     })
 new Vue({
     'el':'#courses',
+      'created':function(){
+         console.log('wellcome Anass project loaded');
+         this.getcourses();
+      },
+      'methods':{
+           'getcourses':function(){
+                         // GET /someUrl
+                    this.$http.get('courses.json').then(response => {
+
+                        // get body data
+                        this.courses = response.body;
+
+                    }, response => {
+                        // error callback
+                    });
+
+           }
+        },
       'template': `<div class="row">
-                    <comp-course :course=firstcourse></comp-course>                      
+      <comp-course :course=firstcourse></comp-course>     
+      <comp-course v-for="course in courses" :course="course"></comp-course>     
+      
                     </div>`,
                     // comp-course components declaration inside vue class 
      'data':{
+          'courses':[],
          'firstcourse':{
             "id": "PL1FWK-sgJ9ek59ylOuaS8Ggjz9oBVM8Hb",
-	        "name": "VueJS \u0625\u0633\u0623\u0644\u0646\u064a \u0639\u0646",
+	        "name": "VueJS Local",
 	        "url": "https:\/\/www.youtube.com\/watch?v=TQQVt3CbSCw&list=PL1FWK-sgJ9ek59ylOuaS8Ggjz9oBVM8Hb",
 	        "description": "",
 	        "thumbnails": "https:\/\/i.ytimg.com\/vi\/TQQVt3CbSCw\/sddefault.jpg",
@@ -57,6 +78,6 @@ new Vue({
 	            "lessons": 2
          }
       }
-    }
+     }
 });
 }
