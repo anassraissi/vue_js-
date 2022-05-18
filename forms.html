@@ -22,6 +22,13 @@
      <br><br>
     <label for="second_radio">Second Radio</label>
     <input type="radio" name="" id="second_radio" value="secondradio" v-model="secondradio">
+      <br>
+
+    <label for="checkbox_one">checkbox one</label>
+    <input type="checkbox" name="" id="checkbox_one" value="one" v-model="checkbox_array"> <br>
+    <label for="checkbox_two">checkbox two</label>
+    <input type="checkbox" name="" id="checkbox_two" value="two" v-model="checkbox_array">  
+    <!-- two  checkbox are selected because two have same value are  checkbox_array:['one','two']-->
 
     </div>
      <script>
@@ -30,7 +37,9 @@
             'data':{
                 name : 'anass is learning about forms',
                  radidvalue:'two',
-                 secondradio:''
+                 secondradio:'',
+                 checkbox:false,
+                 checkbox_array:['one','two']
             }
       });
      </script>
