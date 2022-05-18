@@ -29,7 +29,25 @@
     <label for="checkbox_two">checkbox two</label>
     <input type="checkbox" name="" id="checkbox_two" value="two" v-model="checkbox_array">  
     <!-- two  checkbox are selected because two have same value are  checkbox_array:['one','two']-->
-
+   
+    <label for="select">chose one</label>
+   <select name="" id="select" v-model="select">
+       <option value="one">One</option>
+       <option value="two">two</option>
+   </select>
+    <br><br>
+    <label for="select_multiple">chose multiple</label>
+   <select name="" id="select_multiple" v-model="select_multi" multiple="">
+       <option value="one">One</option>
+       <option value="two">two</option>
+   </select>
+    <br> <br>
+    <label for="chose_one_of_it">chose one of it</label>
+   <select name="" id="chose_one_of_it" v-model="data_chose_one_of_it">
+       <option v-for="select in another_select" :value="select.value" >
+      {{select.name}}
+       </option>
+   </select>
     </div>
      <script>
       new Vue({
@@ -39,7 +57,15 @@
                  radidvalue:'two',
                  secondradio:'',
                  checkbox:false,
-                 checkbox_array:['one','two']
+                 checkbox_array:['one','two'],
+                 select:'one',
+                 select_multi:['one','two'],
+                 data_chose_one_of_it:'',
+                 another_select :[
+                     {'name':'honda','value':'1','country':'japan'},
+                     {'name':'toyota','value':'2','country':'japan'},
+                     {'name':'porshe','value':'3','country':'almangne'},
+                    ]
             }
       });
      </script>
