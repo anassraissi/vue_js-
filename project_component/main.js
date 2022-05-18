@@ -26,7 +26,7 @@ window.onload = function () {   //when page loaded doz mn hna
                             <li>  <i class="fa-solid fa-thumbs-up"></i>  {{course.statistics.likeCount}} </li>
                             <li> <i class="fa-solid fa-comment"></i>  {{course.statistics.commentCount}} </li>
                             </ul>
-          s              </li>
+                      </li>
                         </ul>
                         
                         <div class="card-body">
@@ -43,9 +43,10 @@ new Vue({
          this.getcourses(); // load getcourse when page loaded
       },
       'methods':{
-           'getcourses':function(){    //function to get data jason from file courses.json 
+           'getcourses':function(){    //function to get data jason from file courses.json  
                          // GET /someUrl
-                    this.$http.get('courses.json').then(response => {
+                    this.$http.get('courses.json').then(response => {  // that work just on server web http ,
+                        // i do it by chrome server extention
 
                         // get body data
                         this.courses = response.body;
