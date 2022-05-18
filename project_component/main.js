@@ -26,7 +26,7 @@ window.onload = function () {   //when page loaded doz mn hna
                             <li>  <i class="fa-solid fa-thumbs-up"></i>  {{course.statistics.likeCount}} </li>
                             <li> <i class="fa-solid fa-comment"></i>  {{course.statistics.commentCount}} </li>
                             </ul>
-                        </li>
+          s              </li>
                         </ul>
                         
                         <div class="card-body">
@@ -38,12 +38,12 @@ window.onload = function () {   //when page loaded doz mn hna
      })
 new Vue({
     'el':'#courses',
-      'created':function(){
-         console.log('wellcome Anass project loaded');
-         this.getcourses();
+      'created':function(){   //this mean when page loaded ktab    'created'
+         console.log('wellcome Anass project loaded');  
+         this.getcourses(); // load getcourse when page loaded
       },
       'methods':{
-           'getcourses':function(){
+           'getcourses':function(){    //function to get data jason from file courses.json 
                          // GET /someUrl
                     this.$http.get('courses.json').then(response => {
 
@@ -56,9 +56,10 @@ new Vue({
 
            }
         },
+        // lister les components by foreach
       'template': `<div class="row">
       <comp-course :course=firstcourse></comp-course>     
-      <comp-course v-for="course in courses" :course="course"></comp-course>     
+      <comp-course v-for="course in courses" :course="course"></comp-course>   
       
                     </div>`,
                     // comp-course components declaration inside vue class 
