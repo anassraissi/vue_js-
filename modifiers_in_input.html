@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app"> 
+         <h2> just bind data</h2>
+      <input type="text" name="" id="" v-model="name"><br>
+      <!-- with lazy modifier => it change when mouse click out the input -->
+      <h2>with lazy modifier</h2>  
+      <input type="text" name="" id="" v-model.lazy="name">  <br>
+      <!-- number modifier type number required and it sample to manupilate -->
+      <h2>number modifier </h2>  
+      <input type="text" name="" id="" v-model.number.lazy="numb"> <br>
+      <!-- trim modifiers delete space in the start of the word -->
+      <h2>Trim modifier </h2> 
+            
+      <input type="text" name="" id="" v-model.trim="trim"> <br>
+    </div>
+    <script>
+         new Vue({
+            'el':'#app',
+            'data':{
+                 name:'anass Raissi',
+                 numb:'',
+                 trim :''
+            }
+         });
+    </script>
+</body>
+</html>
