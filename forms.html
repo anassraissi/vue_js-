@@ -12,13 +12,25 @@
     <div id="app">
     <input type="text" V-model="name">
     <textarea name="" id="" cols="30" rows="10" v-model="name"></textarea>
+    <br>
+    <label for="one">Radio one</label>
+    <input type="radio" name="" id="one" value="One" v-model="radidvalue">
+    <br>
+    <label for="two">Radio tow</label>
+    <input type="radio" name="" id="two" value="two" v-model="radidvalue"> 
+    <!-- by default the radio two selected because     radidvalue is'two', -->
+     <br><br>
+    <label for="second_radio">Second Radio</label>
+    <input type="radio" name="" id="second_radio" value="secondradio" v-model="secondradio">
+
     </div>
      <script>
       new Vue({
           'el': '#app',
             'data':{
-                name : 'anass is learning about forms'
-
+                name : 'anass is learning about forms',
+                 radidvalue:'two',
+                 secondradio:''
             }
       });
      </script>
