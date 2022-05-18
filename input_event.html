@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+         <form action="" @submit.prevent="save_from">
+        <h2>jsut binding data</h2>
+       <input type="text" v-model="name">
+       <br>
+        <h2>use event @change on input</h2>
+       <input type="text" v-model="name" @change="changevalue"> <br>
+       <!-- write changevalue in console when we change something in input and click out the input -->
+        <h2>use event @input on input</h2> 
+       <input type="text" v-model="name" @input="changeinput" @change="changevalue"> <br>
+       <!-- write changeinput in console when we change something in input -->
+       <h2>use event @change on select</h2>
+       <select name="" id="" v-model="select" @change="change_select">
+           <option value="one">one</option>
+           <option value="two">one</option>
+       </select>
+       <!-- write change_select in console when we change something in select  and click out of it-->
+       <button type="submit">click</button>
+       </form>
+    </div>
+    <script>
+      new Vue({
+        'el':'#app',
+        'data' :{
+            'name':'anass raissi',
+             'select':[]
+        },
+        'methods':{
+            'changevalue':function(){
+                console.log('changevalue');
+            },
+            'changeinput':function(){
+                console.log('changeinput');
+
+            },
+            'change_select':function(){
+                console.log('change_select');
+
+            },
+            'save_from':function(){
+                console.log('save_from');
+
+            }
+        }
+
+      });
+    </script>
+</body>
+</html>
