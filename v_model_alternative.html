@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <h2>simple bind</h2>
+      <input type="text" v-model="val"> <br>
+      <h2>bind by :value</h2>
+      <!-- but it dosent change when change inside input -->
+      <input type="text" :value="val"> <br>  
+      <h2> bind by : value with semi dyanamic change</h2>
+      <!-- it's  like lazy modifiers v-model.lazy="val" -->
+      <input type="text" :value="val" @change="val=$event.target.value"> <br>  
+      <h2> bind by : value with dyanamic change</h2> 
+      <!-- it's like v-model -->
+      <input type="text" :value="val" @input="val=$event.target.value"> <br>  
+
+
+
+
+<hr>
+      {{val}}
+    </div>
+    <script>
+   new Vue({
+       'el':'#app',
+       'data':{
+           val:'Raissi anass is unstopable'
+       }
+   });
+    </script>
+</body>
+</html>
