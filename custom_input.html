@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+ <datepicker v-model="olddate" ></datepicker>
+    </div>
+    <script>
+          Vue.component('datepicker',{
+          template:` 
+          <div> 
+            <select v-model="date.y" @change="updatedate()">
+        <option>2022</option>
+        <option>2021</option>
+        <option>2020</option>
+    </select> 
+    
+     <select name="" id="" v-model="date.m" @change="updatedate()">
+        <option>04</option>
+        <option>04</option>
+        <option>05</option>
+    </select>  
+    <select name="" id="" v-model="date.d" @change="updatedate()">
+        <option>23</option>
+        <option>02</option>
+        <option>03</option>
+    </select>
+    </div>`,
+       props:['value'],  
+       'computed':{
+           date:function(){
+              var new_date= this.value.split('/');   //with bind value=olddate
+               return {
+                    'y':new_date[0],
+                    'm':new_date[1],
+                    'd':new_date[2]
+               }
+           }
+       },
+       'methods':{
+               updatedate:function(){
+                   var new_data=this.date.y+'/'+this.date.m+'/'+this.date.d;
+                 this.$emit('input',new_data);      //this like v-bind 
+                   //this.$ Emit() is a trigger used to pass values from parent to child components.
+                //    it's like <datepicker @input= v-on:input=""></datepicker> 
+                //  it's replace v-bind=olddate (olddate:'2022/04/23')  to this.date.y+'/'+this.date.m+'/'+this.date.d;
+
+
+
+
+               }
+           }
+        });
+    new Vue({
+        'el':'#app',
+        'data':{
+            olddate:'2022/04/23'
+        }
+
+    });
+    </script>
+  
+</body>
+</html>
