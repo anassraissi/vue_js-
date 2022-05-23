@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+
+</head>
+<body>
+      <div id="app">
+            <comp1></comp1> <br>
+            <comp2></comp2>
+      </div>
+      <script>
+           Vue.mixin({
+               'data':function(){
+                   return{
+                       'var':'dima m3akom'
+                   }
+               }
+           });
+           var mixin={
+            'template':` <div><h1>{{name}}</h1>
+            <h1>{{description}}</h1> </div>`,
+            data:function(){
+                  return{
+                      'date': Date.now(),
+                      'description':'Mixing description'
+                  }
+            },
+            'created':function(){
+                console.log('Mixing Created hook',this.description);
+           }
+           };
+          
+          Vue.component('comp1',{
+              mixins:[mixin],
+                'data':function(){
+                  return {
+                      name : 'Raissi Anass is using mixing vue js in comp1 (1)',
+                    //   'description':'Mixing comp 1'   
+                    // it show  Mixing Created hook Mixing description cause description is empty 
+                  }
+              },
+              'created':function(){
+                console.log('component 1 Created hook',this.description);
+           }
+          });
+          Vue.component('comp2',{
+            mixins:[mixin],
+              'data':function(){
+                  return {
+                      name : 'Raissi Anass is using mixing vue js in comp2 (2)',
+                      description:'Mixing comp 2'
+
+                  }
+              },
+              'created':function(){
+                console.log('component 2 Created hook',this.description);
+           }
+          });
+        new Vue({
+         'el':'#app',
+         
+        });
+      </script>
+</body>
+</html>
