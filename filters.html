@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+       UpperCase:  {{name.toUpperCase()}} <br>
+       LowerCase :   {{name.toLowerCase()}} <br> <hr> 
+       by function <br>
+        ToUpperCase: {{name | touppercase}} <br>
+        ToLowerCase : {{hobies | tolowercase }} <hr>
+        <!-- {{name | touppercase}} declaration function touppercase in filters vue js -->
+        by instance filters in Vue <br>
+        for doblucate :: {{name | doblucate}}      
+       
+
+       
+         
+    </div>
+    <script>
+       Vue.filter('doblucate',function(value){       //declaration vue instace for vue js
+            return value + ' ' +value;
+       });
+
+        new Vue({
+        'el':'#app',
+         'data':{
+              'name':'Raissi Anass',
+              'hobies': ' i like reading books'
+         },
+         'methods':{
+             
+         },
+         'filters':{       // object inside vue js
+            'touppercase':function(value){
+                return value.toUpperCase();
+             },
+            'tolowercase':function(value){
+                return value.toLowerCase();
+             }
+             
+         }
+        });
+    </script>
+</body>
+</html>
